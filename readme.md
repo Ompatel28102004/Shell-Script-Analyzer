@@ -79,13 +79,12 @@ The analyzer detects and gives suggestions for common syntax issues:
 
 ---
 
-### 🔧 Steps to Set Up & Run in single command
+## 🚀 Quick Run (One Command)
 
-**Run the analyzer in single command**
-    ```bash
-    chmod +x build.sh
-    ./build.sh
-    ```
+```bash
+chmod +x build.sh
+./build.sh
+```
 
 ---
 
@@ -115,19 +114,7 @@ The analyzer detects and gives suggestions for common syntax issues:
     ```bash
     java -cp "build;lib/antlr-4.13.1-complete.jar" ShellScriptAnalyzer test.sh
     ```
-
----
-
-### 🔧 Steps to remove build folder and lib folder
-
-    ```bash
-    rm -rf build lib
-    rm -f *.class *.bak
-    ```
-
----
-
-
+    
 ## 📝 Example
 
 ### ✅ Valid Script (`test-ok.sh`)
@@ -190,3 +177,11 @@ Suggestion: The condition in if/while must be inside square brackets '[ conditio
 ├── test-error.sh
 └── README.md
 ```
+## 🧹 Clean Up (Optional)
+
+```bash
+rm -rf build lib
+rm -f *.class *.bak
+```
+
+---
