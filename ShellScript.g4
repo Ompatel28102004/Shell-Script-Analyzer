@@ -1,90 +1,124 @@
 grammar ShellScript;
 
-script: statement* EOF;
+// Parser rules
+program: statement* EOF;
 
 statement
-    : ifStatement
-    | forStatement
-    | whileStatement
-    | echoStatement
+    : simpleCommand
+    | pipeline
+    | compoundStatement
     | assignment
+    | arrayAssignment
+    | SEMI // Allow empty statements
+    ;
+
+simpleCommand
+    : WORD (WORD | STRING | variable | NUMBER)* (redirection)* // e.g., ls -l, echo "hello"
+    ;
+
+pipeline
+    : simpleCommand (PIPE simpleCommand)+ // e.g., ls | grep txt
+    ;
+
+compoundStatement
+    : ifStatement
+    | whileStatement
+    | forStatement
+    | functionDefinition
     ;
 
 ifStatement
-    : 'if' condition 'then' statement* ('else' statement*)? 'fi'
+    : IF testClause THEN statement* (ELIF testClause THEN statement*)* (ELSE statement*)? FI
+    ; // e.g., if [ $x -eq 0 ]; then echo "Zero"; fi
+
+whileStatement
+    : WHILE testClause DO statement* DONE // e.g., while [ $x -lt 5 ]; do echo $x; done
     ;
 
 forStatement
-    : 'for' ID 'in' valueList 'do' statement* 'done'
+    : FOR WORD IN (STRING | variable | WORD | NUMBER)* (SEMI)? DO statement* DONE
+    ; // e.g., for fruit in "${fruits[@]}"; do echo $fruit; done
+
+functionDefinition
+    : FUNCTION WORD LPAREN RPAREN LBRACE statement* RBRACE // e.g., function myfunc() { echo "Hello"; }
     ;
 
-whileStatement
-    : 'while' condition 'do' statement* 'done'
+testClause
+    : LBRACK expression RBRACK // e.g., [ $x -eq 0 ]
     ;
 
-echoStatement
-    : 'echo' (STRING | variable)+
-    ;
+expression
+    : (WORD | STRING | variable | NUMBER) (OPERATOR | EQUALS) (WORD | STRING | variable | NUMBER)?
+    ; // e.g., $x -eq 0, x = y
 
 assignment
-    : ID '=' (value | arithmeticExpr | variable)
-    ;
+    : WORD EQUALS (WORD | STRING | variable | NUMBER | arithmeticExpansion)
+    ; // e.g., x=5, x=$((x + 1))
 
-condition
-    : '[' expr comparator expr ']'
+arrayAssignment
+    : WORD EQUALS LPAREN (STRING)* RPAREN // e.g., fruits=("apple" "banana" "cherry")
     ;
-
-expr
-    : variable
-    | NUMBER
-    ;
-
-comparator
-    : '-lt'
-    | '-le'
-    | '-eq'
-    | '-ne'
-    | '-gt'
-    | '-ge'
-    ;
-
-valueList
-    : (ID | STRING)+
-    ;
-
-value
-    : STRING
-    | NUMBER
-    | ID
-    ;
-
-arithmeticExpr
-    : '$' '(' '(' arithmeticOperation ')' ')'
-    ;
-
-arithmeticOperation
-    : arithmeticTerm (('+' | '-') arithmeticTerm)*
-    ;
-
-arithmeticTerm
-    : arithmeticFactor (('*' | '/') arithmeticFactor)*
-    ;
-
-arithmeticFactor
-    : NUMBER
-    | variable
-    | ID            
-    | '(' arithmeticOperation ')'
-    ;
-
 
 variable
-    : '$' ID
+    : DOLLAR (WORD | LBRACE WORD (ARRAY_INDEX)? RBRACE) // e.g., $x, ${x}, ${fruits[@]}
     ;
 
-ID: [a-zA-Z_][a-zA-Z0-9_]*;
-NUMBER: [0-9]+;
-STRING: '"' (~["\r\n])* '"';
+arithmeticExpansion
+    : DOLLAR LPAREN LPAREN arithExpr RPAREN RPAREN // e.g., $((x + 1))
+    ;
 
+arithExpr
+    : (WORD | NUMBER) (ARITH_OP (WORD | NUMBER))* // e.g., x + 1
+    ;
+
+redirection
+    : (GREATER | LESS | GREATER_GREATER) (WORD | STRING) // e.g., > file.txt, >> log.txt
+    ;
+
+// Lexer rules
+IF: 'if';
+THEN: 'then';
+ELSE: 'else';
+ELIF: 'elif';
+FI: 'fi';
+WHILE: 'while';
+DO: 'do';
+DONE: 'done';
+FOR: 'for';
+IN: 'in';
+FUNCTION: 'function';
+LPAREN: '(';
+RPAREN: ')';
+LBRACE: '{';
+RBRACE: '}';
+LBRACK: '[';
+RBRACK: ']';
+SEMI: ';';
+PIPE: '|';
+GREATER: '>';
+LESS: '<';
+GREATER_GREATER: '>>';
+EQUALS: '=';
+DOLLAR: '$';
+ARRAY_INDEX: '[@]' | '[*]';
+
+// Arithmetic operators
+ARITH_OP: '+' | '-' | '*' | '/' | '%';
+
+// Operators for test expressions (excluding '=' to avoid overlap with EQUALS)
+OPERATOR: '-eq' | '-ne' | '-lt' | '-gt' | '-le' | '-ge' | '!=' | '-z' | '-n';
+
+// Words (commands, arguments, identifiers)
+WORD: [a-zA-Z_][a-zA-Z0-9_]*;
+
+// Numbers (integers)
+NUMBER: [0-9]+;
+
+// Strings (quoted or unquoted)
+STRING: '"' ~["\r\n]* '"' | '\'' ~['\r\n]* '\'';
+
+// Whitespace (ignored)
 WS: [ \t\r\n]+ -> skip;
+
+// Comments (ignored)
 COMMENT: '#' ~[\r\n]* -> skip;
