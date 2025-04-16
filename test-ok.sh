@@ -24,3 +24,6 @@ do
     echo $x
     x=$((x + 1))
 done
+
+add=$((5+2))
+echo "Addition of a and b are: "${add}
