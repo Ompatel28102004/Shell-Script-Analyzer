@@ -1,4 +1,4 @@
-// Generated from c:/Users/okpat/Desktop/Laptop/coding/Project/Shell-Script-Analyzer/ShellScript.g4 by ANTLR 4.13.1
+// Generated from c:/Users/okpat/Desktop/Laptop/coding/Project/Final-Shell-Script-Analyzer/ShellScript.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -7,15 +7,15 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface ShellScriptListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#script}.
+	 * Enter a parse tree produced by {@link ShellScriptParser#program}.
 	 * @param ctx the parse tree
 	 */
-	void enterScript(ShellScriptParser.ScriptContext ctx);
+	void enterProgram(ShellScriptParser.ProgramContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#script}.
+	 * Exit a parse tree produced by {@link ShellScriptParser#program}.
 	 * @param ctx the parse tree
 	 */
-	void exitScript(ShellScriptParser.ScriptContext ctx);
+	void exitProgram(ShellScriptParser.ProgramContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ShellScriptParser#statement}.
 	 * @param ctx the parse tree
@@ -27,6 +27,36 @@ public interface ShellScriptListener extends ParseTreeListener {
 	 */
 	void exitStatement(ShellScriptParser.StatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ShellScriptParser#simpleCommand}.
+	 * @param ctx the parse tree
+	 */
+	void enterSimpleCommand(ShellScriptParser.SimpleCommandContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShellScriptParser#simpleCommand}.
+	 * @param ctx the parse tree
+	 */
+	void exitSimpleCommand(ShellScriptParser.SimpleCommandContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShellScriptParser#pipeline}.
+	 * @param ctx the parse tree
+	 */
+	void enterPipeline(ShellScriptParser.PipelineContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShellScriptParser#pipeline}.
+	 * @param ctx the parse tree
+	 */
+	void exitPipeline(ShellScriptParser.PipelineContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShellScriptParser#compoundStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterCompoundStatement(ShellScriptParser.CompoundStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShellScriptParser#compoundStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitCompoundStatement(ShellScriptParser.CompoundStatementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ShellScriptParser#ifStatement}.
 	 * @param ctx the parse tree
 	 */
@@ -36,16 +66,6 @@ public interface ShellScriptListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIfStatement(ShellScriptParser.IfStatementContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#forStatement}.
-	 * @param ctx the parse tree
-	 */
-	void enterForStatement(ShellScriptParser.ForStatementContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#forStatement}.
-	 * @param ctx the parse tree
-	 */
-	void exitForStatement(ShellScriptParser.ForStatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ShellScriptParser#whileStatement}.
 	 * @param ctx the parse tree
@@ -57,15 +77,45 @@ public interface ShellScriptListener extends ParseTreeListener {
 	 */
 	void exitWhileStatement(ShellScriptParser.WhileStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#echoStatement}.
+	 * Enter a parse tree produced by {@link ShellScriptParser#forStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterEchoStatement(ShellScriptParser.EchoStatementContext ctx);
+	void enterForStatement(ShellScriptParser.ForStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#echoStatement}.
+	 * Exit a parse tree produced by {@link ShellScriptParser#forStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitEchoStatement(ShellScriptParser.EchoStatementContext ctx);
+	void exitForStatement(ShellScriptParser.ForStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShellScriptParser#functionDefinition}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionDefinition(ShellScriptParser.FunctionDefinitionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShellScriptParser#functionDefinition}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionDefinition(ShellScriptParser.FunctionDefinitionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShellScriptParser#testClause}.
+	 * @param ctx the parse tree
+	 */
+	void enterTestClause(ShellScriptParser.TestClauseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShellScriptParser#testClause}.
+	 * @param ctx the parse tree
+	 */
+	void exitTestClause(ShellScriptParser.TestClauseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShellScriptParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpression(ShellScriptParser.ExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShellScriptParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpression(ShellScriptParser.ExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ShellScriptParser#assignment}.
 	 * @param ctx the parse tree
@@ -77,95 +127,15 @@ public interface ShellScriptListener extends ParseTreeListener {
 	 */
 	void exitAssignment(ShellScriptParser.AssignmentContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#condition}.
+	 * Enter a parse tree produced by {@link ShellScriptParser#arrayAssignment}.
 	 * @param ctx the parse tree
 	 */
-	void enterCondition(ShellScriptParser.ConditionContext ctx);
+	void enterArrayAssignment(ShellScriptParser.ArrayAssignmentContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#condition}.
+	 * Exit a parse tree produced by {@link ShellScriptParser#arrayAssignment}.
 	 * @param ctx the parse tree
 	 */
-	void exitCondition(ShellScriptParser.ConditionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterExpr(ShellScriptParser.ExprContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitExpr(ShellScriptParser.ExprContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#comparator}.
-	 * @param ctx the parse tree
-	 */
-	void enterComparator(ShellScriptParser.ComparatorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#comparator}.
-	 * @param ctx the parse tree
-	 */
-	void exitComparator(ShellScriptParser.ComparatorContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#valueList}.
-	 * @param ctx the parse tree
-	 */
-	void enterValueList(ShellScriptParser.ValueListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#valueList}.
-	 * @param ctx the parse tree
-	 */
-	void exitValueList(ShellScriptParser.ValueListContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#value}.
-	 * @param ctx the parse tree
-	 */
-	void enterValue(ShellScriptParser.ValueContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#value}.
-	 * @param ctx the parse tree
-	 */
-	void exitValue(ShellScriptParser.ValueContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#arithmeticExpr}.
-	 * @param ctx the parse tree
-	 */
-	void enterArithmeticExpr(ShellScriptParser.ArithmeticExprContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#arithmeticExpr}.
-	 * @param ctx the parse tree
-	 */
-	void exitArithmeticExpr(ShellScriptParser.ArithmeticExprContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#arithmeticOperation}.
-	 * @param ctx the parse tree
-	 */
-	void enterArithmeticOperation(ShellScriptParser.ArithmeticOperationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#arithmeticOperation}.
-	 * @param ctx the parse tree
-	 */
-	void exitArithmeticOperation(ShellScriptParser.ArithmeticOperationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#arithmeticTerm}.
-	 * @param ctx the parse tree
-	 */
-	void enterArithmeticTerm(ShellScriptParser.ArithmeticTermContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#arithmeticTerm}.
-	 * @param ctx the parse tree
-	 */
-	void exitArithmeticTerm(ShellScriptParser.ArithmeticTermContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShellScriptParser#arithmeticFactor}.
-	 * @param ctx the parse tree
-	 */
-	void enterArithmeticFactor(ShellScriptParser.ArithmeticFactorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShellScriptParser#arithmeticFactor}.
-	 * @param ctx the parse tree
-	 */
-	void exitArithmeticFactor(ShellScriptParser.ArithmeticFactorContext ctx);
+	void exitArrayAssignment(ShellScriptParser.ArrayAssignmentContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ShellScriptParser#variable}.
 	 * @param ctx the parse tree
@@ -176,4 +146,34 @@ public interface ShellScriptListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVariable(ShellScriptParser.VariableContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShellScriptParser#arithmeticExpansion}.
+	 * @param ctx the parse tree
+	 */
+	void enterArithmeticExpansion(ShellScriptParser.ArithmeticExpansionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShellScriptParser#arithmeticExpansion}.
+	 * @param ctx the parse tree
+	 */
+	void exitArithmeticExpansion(ShellScriptParser.ArithmeticExpansionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShellScriptParser#arithExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterArithExpr(ShellScriptParser.ArithExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShellScriptParser#arithExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitArithExpr(ShellScriptParser.ArithExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShellScriptParser#redirection}.
+	 * @param ctx the parse tree
+	 */
+	void enterRedirection(ShellScriptParser.RedirectionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShellScriptParser#redirection}.
+	 * @param ctx the parse tree
+	 */
+	void exitRedirection(ShellScriptParser.RedirectionContext ctx);
 }

@@ -1,4 +1,4 @@
-// Generated from c:/Users/okpat/Desktop/Laptop/coding/Project/Shell-Script-Analyzer/ShellScript.g4 by ANTLR 4.13.1
+// Generated from c:/Users/okpat/Desktop/Laptop/coding/Project/Final-Shell-Script-Analyzer/ShellScript.g4 by ANTLR 4.13.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -16,13 +16,13 @@ public class ShellScriptBaseListener implements ShellScriptListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterScript(ShellScriptParser.ScriptContext ctx) { }
+	@Override public void enterProgram(ShellScriptParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitScript(ShellScriptParser.ScriptContext ctx) { }
+	@Override public void exitProgram(ShellScriptParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -40,6 +40,42 @@ public class ShellScriptBaseListener implements ShellScriptListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSimpleCommand(ShellScriptParser.SimpleCommandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSimpleCommand(ShellScriptParser.SimpleCommandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPipeline(ShellScriptParser.PipelineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPipeline(ShellScriptParser.PipelineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCompoundStatement(ShellScriptParser.CompoundStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCompoundStatement(ShellScriptParser.CompoundStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIfStatement(ShellScriptParser.IfStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -47,18 +83,6 @@ public class ShellScriptBaseListener implements ShellScriptListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitIfStatement(ShellScriptParser.IfStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterForStatement(ShellScriptParser.ForStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitForStatement(ShellScriptParser.ForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -76,13 +100,49 @@ public class ShellScriptBaseListener implements ShellScriptListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEchoStatement(ShellScriptParser.EchoStatementContext ctx) { }
+	@Override public void enterForStatement(ShellScriptParser.ForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEchoStatement(ShellScriptParser.EchoStatementContext ctx) { }
+	@Override public void exitForStatement(ShellScriptParser.ForStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunctionDefinition(ShellScriptParser.FunctionDefinitionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionDefinition(ShellScriptParser.FunctionDefinitionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTestClause(ShellScriptParser.TestClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTestClause(ShellScriptParser.TestClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpression(ShellScriptParser.ExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpression(ShellScriptParser.ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -100,109 +160,13 @@ public class ShellScriptBaseListener implements ShellScriptListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCondition(ShellScriptParser.ConditionContext ctx) { }
+	@Override public void enterArrayAssignment(ShellScriptParser.ArrayAssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCondition(ShellScriptParser.ConditionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterExpr(ShellScriptParser.ExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpr(ShellScriptParser.ExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterComparator(ShellScriptParser.ComparatorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitComparator(ShellScriptParser.ComparatorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterValueList(ShellScriptParser.ValueListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitValueList(ShellScriptParser.ValueListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterValue(ShellScriptParser.ValueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitValue(ShellScriptParser.ValueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArithmeticExpr(ShellScriptParser.ArithmeticExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArithmeticExpr(ShellScriptParser.ArithmeticExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArithmeticOperation(ShellScriptParser.ArithmeticOperationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArithmeticOperation(ShellScriptParser.ArithmeticOperationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArithmeticTerm(ShellScriptParser.ArithmeticTermContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArithmeticTerm(ShellScriptParser.ArithmeticTermContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArithmeticFactor(ShellScriptParser.ArithmeticFactorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArithmeticFactor(ShellScriptParser.ArithmeticFactorContext ctx) { }
+	@Override public void exitArrayAssignment(ShellScriptParser.ArrayAssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -215,6 +179,42 @@ public class ShellScriptBaseListener implements ShellScriptListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVariable(ShellScriptParser.VariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArithmeticExpansion(ShellScriptParser.ArithmeticExpansionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArithmeticExpansion(ShellScriptParser.ArithmeticExpansionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArithExpr(ShellScriptParser.ArithExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArithExpr(ShellScriptParser.ArithExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRedirection(ShellScriptParser.RedirectionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRedirection(ShellScriptParser.RedirectionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

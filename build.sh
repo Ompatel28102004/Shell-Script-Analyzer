@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Determine the classpath separator based on the operating system
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
+    CP_SEP=";"
+else
+    CP_SEP=":"
+fi
+
 echo "Step 1: Creating 'lib' directory..."
 mkdir -p lib
 echo "'lib' directory ready."
@@ -17,19 +24,19 @@ echo "Parser and visitor generated."
 
 echo
 echo "Step 4: Compiling Java files..."
-javac -cp "lib/antlr-4.13.1-complete.jar;build" -d build build/*.java ShellScriptAnalyzer.java ShellScriptErrorListener.java
+javac -cp "lib/antlr-4.13.1-complete.jar${CP_SEP}build" -d build build/*.java ShellScriptAnalyzer.java ShellScriptErrorListener.java
 echo "Compilation successful."
 
 echo
 echo "Step 5: Running analyzer on test-ok.sh"
 echo "----------------------------------------"
-java -cp "build;lib/antlr-4.13.1-complete.jar" ShellScriptAnalyzer test-ok.sh
+java -cp "build${CP_SEP}lib/antlr-4.13.1-complete.jar" ShellScriptAnalyzer test-ok.sh
 echo "test-ok.sh executed."
 echo
 
 echo "Step 6: Running analyzer on test-error.sh"
 echo "-------------------------------------------"
-java -cp "build;lib/antlr-4.13.1-complete.jar" ShellScriptAnalyzer test-error.sh
+java -cp "build${CP_SEP}lib/antlr-4.13.1-complete.jar" ShellScriptAnalyzer test-error.sh
 echo "test-error.sh executed."
 
 echo
